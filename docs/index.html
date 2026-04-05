@@ -140,8 +140,7 @@
           <div class="content">
             <img src="./static/images/teaser.png" alt="AVRT pipeline overview"/>
             <p class="has-text-centered">
-              <strong>Top:</strong> Overview of the AVRT pipeline. We first generate reasoning chains from single-modality teacher models, then leverage an LLM merger to aggregate the information into cross-modal reasoning traces.
-              <strong>Bottom:</strong> Zero-shot accuracy on OmniBench during two-stage training on AVQA: the SFT phase on AVRT-generated reasoning chains serves as a cold start, yielding better performance during RL training compared to RL alone.
+              Overview of the AVRT pipeline: We first generate reasoning chains from single-modality teacher models prompted in the format they were optimized for, then leverage an LLM merger to aggregate the information into cross-modal reasoning traces. The resulting audio-visual traces are used to train a student model via supervised fine-tuning (SFT) followed by GRPO fine-tuning.
             </p>
           </div>
         </div>
