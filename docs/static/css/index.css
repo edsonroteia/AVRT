@@ -1,0 +1,317 @@
+/* ==========================================================================
+   Project page theme — edsonroteia.github.io
+   Overrides Bulma/Nerfies defaults with Lato + Source Serif Pro
+   Dark pastel accent palette: steel blue + terracotta
+   ========================================================================== */
+
+/* ---- Accent palette ---- */
+:root {
+  --accent:       #5c7a8a;  /* dusty steel blue  */
+  --accent-light: rgba(92, 122, 138, 0.3);
+  --warm:         #b8705a;  /* muted terracotta   */
+  --warm-light:   #f7f3ef;  /* warm cream         */
+}
+
+/* ---- Fonts (same declarations as main site) ---- */
+@font-face {
+  font-family: 'Source Serif Pro';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/sourceserifpro/v15/neIQzD-0qpwxpaWvJW_CGxGpZNqRS5pCoPgZKqWi.woff2) format('woff2');
+}
+
+/* ---- Base typography ---- */
+body {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #1a1a1a;
+}
+
+.content p,
+.content li,
+td, th, tr, p {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #1a1a1a;
+}
+
+strong, b {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+}
+
+/* ---- Headings ---- */
+h1, .title.is-1 {
+  font-family: 'Source Serif Pro', Georgia, 'Times New Roman', serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em;
+  color: #111 !important;
+}
+
+h2, .title.is-3, .title.is-2 {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 20px !important;
+  color: #222 !important;
+  letter-spacing: -0.01em;
+}
+
+h3, .title.is-4 {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 17px !important;
+  color: #333 !important;
+}
+
+/* ---- Links ---- */
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: var(--accent-light);
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: var(--warm);
+  text-decoration: underline;
+  text-decoration-color: var(--warm);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--warm);
+  outline-offset: 2px;
+}
+
+/* ---- Navbar ---- */
+.navbar {
+  background: transparent;
+  box-shadow: none;
+  border-bottom: 1px solid #eee;
+}
+
+.navbar-item {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.navbar-item:hover {
+  color: var(--warm);
+  background: transparent;
+}
+
+/* ---- Hero / Title section ---- */
+.hero {
+  background: none;
+}
+
+.hero .hero-body {
+  padding: 2rem 1.5rem 1rem;
+}
+
+.publication-title {
+  font-family: 'Source Serif Pro', Georgia, 'Times New Roman', serif !important;
+  font-size: 32px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em;
+  color: #111 !important;
+  line-height: 1.25;
+}
+
+.publication-authors {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif !important;
+  color: #444;
+  font-size: 15px;
+}
+
+.publication-authors a {
+  color: var(--accent) !important;
+  text-decoration: none;
+}
+
+.publication-authors a:hover {
+  color: var(--warm) !important;
+  text-decoration: underline;
+  text-decoration-color: var(--warm);
+}
+
+.author-block {
+  display: inline-block;
+}
+
+/* ---- Buttons / Publication links ---- */
+.publication-links .button,
+.publication-links .external-link {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 4px !important;
+  padding: 6px 16px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.publication-links .button:hover,
+.publication-links .external-link:hover {
+  background-color: var(--warm) !important;
+  border-color: var(--warm) !important;
+  color: #fff !important;
+  text-decoration: none;
+}
+
+.publication-links .button .icon,
+.publication-links .external-link .icon {
+  color: #fff !important;
+}
+
+.link-block {
+  position: relative;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.link-block a {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* Tooltip */
+.tooltip {
+  visibility: hidden;
+  width: 140px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 12px;
+  position: absolute;
+  z-index: 1;
+  bottom: -45px;
+  left: 50%;
+  margin-left: -70px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 13px;
+}
+
+.link-block a:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* ---- Sections ---- */
+.section {
+  padding: 2rem 1.5rem;
+}
+
+.hero.is-small .hero-body {
+  padding: 1.5rem;
+  background: none;
+}
+
+/* ---- Tables (results) ---- */
+.table {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+  border-collapse: collapse;
+}
+
+.table th {
+  font-weight: 700;
+  color: #222;
+  background-color: #fafafa;
+  border-bottom: 2px solid #ddd;
+}
+
+.table td, .table th {
+  padding: 8px 10px;
+  border-color: #eaeaea;
+}
+
+.table.is-striped tbody tr:not(.is-selected):nth-child(even) {
+  background-color: #fafafa;
+}
+
+.table.is-hoverable tbody tr:not(.is-selected):hover {
+  background-color: #f5f5f5;
+}
+
+/* Highlighted result rows (ours) */
+tr[style*="D9EAF7"] {
+  background-color: var(--warm-light) !important;
+  border-left: 4px solid var(--warm);
+}
+
+/* ---- BibTeX ---- */
+pre {
+  background-color: #fafafa;
+  border: 1px solid #eaeaea;
+  border-radius: 6px;
+  padding: 16px 20px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #333;
+}
+
+code {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', monospace;
+  font-size: 13px;
+  color: #333;
+  background: none;
+}
+
+/* ---- Footer ---- */
+.footer {
+  background: none;
+  padding: 16px 0;
+  border-top: 1px solid #eee;
+}
+
+.footer .content p {
+  font-size: 13px;
+  color: #888;
+}
+
+.footer .icon-link {
+  font-size: 20px;
+  color: #888;
+  text-decoration: none;
+}
+
+.footer .icon-link:hover {
+  color: var(--warm);
+}
+
+/* ---- Figure captions ---- */
+.content figure + p,
+figcaption,
+.image + p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.55;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .publication-title {
+    font-size: 24px !important;
+  }
+
+  .section {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

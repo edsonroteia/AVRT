@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="AVRT: Audio-Visual Reasoning Transfer through Single-Modality Teachers">
+  <meta name="keywords" content="Audio-Visual, Reasoning, Reinforcement Learning, Multimodal Learning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AVRT: Audio-Visual Reasoning Transfer through Single-Modality Teachers</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://edsonroteia.github.io" title="Home">
+      <span class="icon">
+        <i class="fas fa-home"></i>
+      </span>
+    </a>
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+    </div>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">AVRT: Audio-Visual Reasoning Transfer through Single-Modality Teachers</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/edsonroteia/">Edson Araujo</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.csail.mit.edu/person/saurabhchand-bhati">Saurabhchand Bhati</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=LMLI4EAAAAAJ">M. Jehanzeb Mirza</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=E_loSC8AAAAJ">Brian Kingsbury</a><sup>3</sup>,</span>
+            <span class="author-block">
+              <a href="https://research.ibm.com/people/samuel-thomas">Samuel Thomas</a><sup>3</sup>,</span>
+            <span class="author-block">
+              <a href="https://research.ibm.com/people/rogerio-feris">Rogerio Feris</a><sup>3,4</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.csail.mit.edu/person/jim-glass">James R. Glass</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://hildekuehne.github.io/">Hilde Kuehne</a><sup>4,5</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Tubingen,</span>
+            <span class="author-block"><sup>2</sup>MIT,</span>
+            <span class="author-block"><sup>3</sup>IBM Research,</span>
+            <span class="author-block"><sup>4</sup>MIT-IBM Watson AI Lab,</span>
+            <span class="author-block"><sup>5</sup>Tuebingen AI Center</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                  <span class="tooltip">Coming soon!</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  <span class="tooltip">Coming soon!</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered is-vcentered">
+      <!-- Abstract -->
+      <div class="column">
+        <h2 class="title is-3 has-text-centered">Abstract</h2>
+        <div class="content">
+          <p>
+            Recent advances in reasoning models have shown remarkable progress in text-based domains, but transferring those capabilities to multimodal settings, and allowing reasoning e.g. over audio-visual data, still remains a challenge, i.a. because of the limited availability of high-quality reasoning data in targeted multimodal combinations.
+          </p>
+          <p>
+            To address this problem we introduce AVRT, a novel framework that generates high-quality audio-visual reasoning traces from single-modality teacher models. We generate independent vision- and audio-reasoning traces via models specialized to reason over their respective modalities and merge the resulting traces with an LLM merger model. The resulting multimodal traces are used in a supervised fine-tuning (SFT) cold start to adapt the target model to audio-visual reasoning traces first, before training it in a second reinforcement learning stage on larger-scale data.
+          </p>
+          <p>
+            Our evaluation shows that the proposed pipeline based on generated multimodal traces for SFT allows models to achieve superior performance on various datasets, i.a. OmniBench, DailyOmni, and MMAR, compared to RL alone, establishing a new pipeline for training of audio-visual reasoning models.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-10">
+          <h2 class="title is-3">Method Overview</h2>
+          <div class="content">
+            <img src="./static/images/teaser.png" alt="AVRT pipeline overview"/>
+            <p class="has-text-centered">
+              <strong>Top:</strong> Overview of the AVRT pipeline. We first generate reasoning chains from single-modality teacher models, then leverage an LLM merger to aggregate the information into cross-modal reasoning traces.
+              <strong>Bottom:</strong> Zero-shot accuracy on OmniBench during two-stage training on AVQA: the SFT phase on AVRT-generated reasoning chains serves as a cold start, yielding better performance during RL training compared to RL alone.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Results</h2>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <h3 class="title is-4">Comparison to State-of-the-Art</h3>
+        <div style="overflow-x: auto;">
+        <table class="table is-striped is-bordered is-hoverable" style="border-collapse: collapse; width: 100%;">
+          <thead>
+            <tr>
+              <th style="text-align: left;">Model</th>
+              <th style="text-align: center;">#Params</th>
+              <th style="text-align: center;">Reasoning</th>
+              <th style="text-align: center;">DailyOmni</th>
+              <th style="text-align: center;">OmniBench</th>
+              <th style="text-align: center;">AVQA</th>
+              <th style="text-align: center;">MMAR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td colspan="7" style="text-align: left; font-style: italic; background: #f5f5f5;">7B Audio-Visual Models</td></tr>
+            <tr>
+              <td>Qwen2.5 Omni</td>
+              <td style="text-align: center;">7B</td>
+              <td style="text-align: center;">-</td>
+              <td style="text-align: center;">44.0</td>
+              <td style="text-align: center;">44.2</td>
+              <td style="text-align: center;">-</td>
+              <td style="text-align: center;">56.7</td>
+            </tr>
+            <tr>
+              <td>Qwen2.5 Omni*</td>
+              <td style="text-align: center;">7B</td>
+              <td style="text-align: center;">-</td>
+              <td style="text-align: center;">51.5</td>
+              <td style="text-align: center;">50.7</td>
+              <td style="text-align: center;">84.9</td>
+              <td style="text-align: center;">56.5</td>
+            </tr>
+            <tr>
+              <td>EchoInk</td>
+              <td style="text-align: center;">7B</td>
+              <td style="text-align: center;">&#10003;</td>
+              <td style="text-align: center;">46.2</td>
+              <td style="text-align: center;">46.5</td>
+              <td style="text-align: center;">-</td>
+              <td style="text-align: center;">-</td>
+            </tr>
+            <tr>
+              <td>Omni-R1</td>
+              <td style="text-align: center;">7B</td>
+              <td style="text-align: center;">&#10003;</td>
+              <td style="text-align: center;">46.8</td>
+              <td style="text-align: center;">46.9</td>
+              <td style="text-align: center;">-</td>
+              <td style="text-align: center;">-</td>
+            </tr>
+            <tr>
+              <td>HumanOmni</td>
+              <td style="text-align: center;">7B</td>
+              <td style="text-align: center;">&#10003;</td>
+              <td style="text-align: center;">47.6</td>
+              <td style="text-align: center;">44.9</td>
+              <td style="text-align: center;">-</td>
+              <td style="text-align: center;">-</td>
+            </tr>
+            <tr>
+              <td>Ola-7B</td>
+              <td style="text-align: center;">7B</td>
+              <td style="text-align: center;">-</td>
+              <td style="text-align: center;">52.3</td>
+              <td style="text-align: center;">45.3</td>
+              <td style="text-align: center;">-</td>
+              <td style="text-align: center;">-</td>
+            </tr>
+            <tr>
+              <td>AV-Reasoner</td>
+              <td style="text-align: center;">7B</td>
+              <td style="text-align: center;">&#10003;</td>
+              <td style="text-align: center;"><strong>53.8</strong></td>
+              <td style="text-align: center;">48.3</td>
+              <td style="text-align: center;">-</td>
+              <td style="text-align: center;">-</td>
+            </tr>
+            <tr>
+              <td>AVATAR</td>
+              <td style="text-align: center;">7B</td>
+              <td style="text-align: center;">&#10003;</td>
+              <td style="text-align: center;">47.0</td>
+              <td style="text-align: center;"><strong>49.1</strong></td>
+              <td style="text-align: center;">-</td>
+              <td style="text-align: center;">-</td>
+            </tr>
+
+            <tr><td colspan="7" style="text-align: left; font-style: italic; background: #f5f5f5;">Modality-Specific Teachers</td></tr>
+            <tr>
+              <td>Kimi-VL-Thinking</td>
+              <td style="text-align: center;">-</td>
+              <td style="text-align: center;">&#10003;</td>
+              <td style="text-align: center;">-</td>
+              <td style="text-align: center;">33.5</td>
+              <td style="text-align: center;">-</td>
+              <td style="text-align: center; font-style: italic;">N/A</td>
+            </tr>
+            <tr>
+              <td>AF3 (think)</td>
+              <td style="text-align: center;">-</td>
+              <td style="text-align: center;">&#10003;</td>
+              <td style="text-align: center;">-</td>
+              <td style="text-align: center;">28.9</td>
+              <td style="text-align: center;">-</td>
+              <td style="text-align: center;">60.1</td>
+            </tr>
+
+            <tr><td colspan="7" style="text-align: left; font-style: italic; background: #f5f5f5;">3B Audio-Visual Models</td></tr>
+            <tr>
+              <td>Qwen2.5 Omni</td>
+              <td style="text-align: center;">3B</td>
+              <td style="text-align: center;">-</td>
+              <td style="text-align: center;">42.9</td>
+              <td style="text-align: center;">42.4</td>
+              <td style="text-align: center;">-</td>
+              <td style="text-align: center;">-</td>
+            </tr>
+            <tr>
+              <td>AVATAR</td>
+              <td style="text-align: center;">3B</td>
+              <td style="text-align: center;">&#10003;</td>
+              <td style="text-align: center;">44.7 <small>(+1.8)</small></td>
+              <td style="text-align: center;">45.8 <small>(+3.4)</small></td>
+              <td style="text-align: center;">-</td>
+              <td style="text-align: center;">-</td>
+            </tr>
+            <tr>
+              <td>Qwen2.5 Omni*</td>
+              <td style="text-align: center;">3B</td>
+              <td style="text-align: center;">-</td>
+              <td style="text-align: center;">43.1</td>
+              <td style="text-align: center;">50.2</td>
+              <td style="text-align: center;">88.3</td>
+              <td style="text-align: center;">53.7</td>
+            </tr>
+            <tr style="background-color: #f7f3ef; border-left: 4px solid #b8705a;">
+              <td><strong>AVRT (Ours)</strong></td>
+              <td style="text-align: center;">3B</td>
+              <td style="text-align: center;">&#10003;</td>
+              <td style="text-align: center;"><strong>49.2</strong> <small style="color: #2a6e4a;">(+6.1)</small></td>
+              <td style="text-align: center;"><strong>56.3</strong> <small style="color: #2a6e4a;">(+6.1)</small></td>
+              <td style="text-align: center;"><strong>91.1</strong> <small style="color: #2a6e4a;">(+2.8)</small></td>
+              <td style="text-align: center;"><strong>57.3</strong> <small style="color: #2a6e4a;">(+3.6)</small></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="has-text-centered">
+          AVRT achieves superior performance on OmniBench (+6.1), DailyOmni (+6.1), and MMAR (+3.6) over the reproduced Qwen2.5-Omni 3B baseline, using only 3B parameters. DailyOmni, OmniBench, and MMAR are tested zero-shot. Reproduced baselines marked with *.
+        </p>
+      </div>
+    </section>
+
+    <!-- Qualitative Results -->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <h3 class="title is-4">Qualitative Results</h3>
+        <div class="content">
+          <img src="./static/images/qualitative.png" alt="Qualitative results showing audio-visual reasoning traces"/>
+          <p class="has-text-centered">
+            Qualitative results of the AVRT-trained model on OmniBench. The model retrieves audio and visual information to answer the question, combines the two sources of information, and generates high-quality reasoning chains based on different cues in both modalities.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{araujo2025avrt,
+  title={AVRT: Audio-Visual Reasoning Transfer through Single-Modality Teachers},
+  author={Araujo, Edson and Bhati, Saurabhchand and Mirza, M Jehanzeb and Kingsbury, Brian and Thomas, Samuel and Feris, Rogerio and Glass, James R and Kuehne, Hilde},
+  year={2025}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website template from <a href="https://github.com/nerfies/nerfies.github.io">nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
